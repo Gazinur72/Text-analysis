@@ -1,26 +1,42 @@
-def analysis_text(text):
-    text = text.lower()
+def text_lower(text):
+    return text.lower()
+
+
+def text_punctuation(text):
     for punctuation in ".,;:!?(){}[]'\"":
         text = text.replace(punctuation, "")
+    return text
+
+
+def count_words(text):
     words = text.split()
-    word_count = len(words)
-    longset_word = max(words, key=len)
+    return len(words)
+
+
+def long_word(text):
+    words = text.split()
+    return max(words, key=len)
+
+
+def vowels(text):
     vowels = "уеыаоэяию"
-    vowel_count = sum(1 for char in text if char in vowels)
+    return sum(1 for char in text if char in vowels)
+
+def word_frequency(text):
     word_frequency = {}
+    words = text.split()
     for word in words:
         if word in word_frequency:
             word_frequency[word] += 1
         else:
             word_frequency[word] = 1
-
-    print(f"Количество слов: {word_count}.")
-    print(f"Самое длинное слово: {longset_word}.")
-    print(f"Количество гласных в тексте: {vowel_count}")
-    print("Частота слов: ")
-    for word, frequency in word_frequency.items():
-        print(f"{word}: {frequency} ")
-
+    return word_frequency
 
 user_input = input("Введите текст: ")
-analysis_text(user_input)
+redact_text = text_lower(text_punctuation(user_input))
+print(f"Количество слов: {count_words(redact_text)}.")
+print(f"Самое длинное слово: {long_word(redact_text)}.")
+print(f"Количество гласных в тексте: {vowels(redact_text)}")
+print("Частота слов: ")
+for word, frequency in word_frequency(redact_text).items():
+    print(f"{word}: {frequency} ")

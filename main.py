@@ -1,5 +1,5 @@
 def text_punctuation(text):
-    for punctuation in ".,;:!?(){}[]'\"":
+    for punctuation in ".,;:!?(){}[]'\"@#$%^&*-_=+№<>/|":
         text = text.replace(punctuation, "")
     return text
 
@@ -10,7 +10,7 @@ def long_word(text):
 
 
 def vowels(text):
-    vowels = "уеыаоэяию"
+    vowels = "уеыаоэяиюaeiouy"
     return sum(1 for char in text if char in vowels)
 
 
